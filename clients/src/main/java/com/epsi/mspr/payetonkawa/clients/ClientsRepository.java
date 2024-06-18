@@ -1,16 +1,15 @@
 package com.epsi.mspr.payetonkawa.clients;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public abstract interface ClientsRepository extends CrudRepository<ClientEntity, Integer> {
-    List<ClientEntity> findAllClients();
-    ClientEntity findClientByID(String id);
-    ClientEntity findClientByFullName(String name, String familyName);
-    ClientEntity addClient(ClientEntity clientEntity);
-    ClientEntity updateClient(String id, ClientEntity clientEntity);
-    ClientEntity deleteClient(String id);
+public abstract interface ClientsRepository extends JpaRepository<ClientEntity, Long> {
+    List<ClientEntity> findAll();
+    ClientEntity findClientByClientID(Long id);
+    ClientEntity findClientEntityByFullName(String fullName);
+    ClientEntity save(ClientEntity clientEntity);
+    ClientEntity deleteClientEntityByClientID(Long id);
 }

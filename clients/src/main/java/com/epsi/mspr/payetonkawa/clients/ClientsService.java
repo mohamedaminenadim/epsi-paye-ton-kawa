@@ -9,23 +9,29 @@ public class ClientsService {
     public ClientsRepository repository;
 
     public List<ClientEntity> getAllClients() {
-        return repository.findAllClients();
+        return this.repository.findAll();
     }
 
-    public ClientEntity getClientByID(String id) {
-        return repository.findClientByID(id);
+    public ClientEntity getClientByID(Long id) {
+        return this.repository.findClientByClientID(id);
     }
 
-    public ClientEntity getClientByFullName(String name, String familyName) {
-        return repository.findClientByFullName(name, familyName);
+    public ClientEntity getClientByFullName(String fullName) {
+        return this.repository.findClientEntityByFullName(fullName);
     }
     public ClientEntity postClient(ClientEntity clientEntity) {
-        return repository.addClient(clientEntity);
+        return this.repository.save(clientEntity);
     }
-    public ClientEntity patchClient(String id, ClientEntity clientEntity) {
-        return repository.updateClient(id, clientEntity);
+    public ClientEntity patchClient(Long id, ClientEntity clientEntity) {
+        ClientEntity toUpdate = this.repository.findClientByClientID(id);
+        toUpdate.setUsername(clientEntity.getUsername());
+        toUpdate.setFirstName(clientEntity.getFirstName());
+        toUpdate.setFamilyName(clientEntity.getFamilyName());
+        toUpdate.setAddress(clientEntity.getAddress());
+        toUpdate.setCreatedAt(clientEntity.getCreatedAt());
+        return this.repository.save(clientEntity);
     }
-    public ClientEntity deleteClient(String id) {
-        return repository.deleteClient(id);
+    public ClientEntity deleteClient(Long id) {
+        return this.repository.deleteClientEntityByClientID(id);
     }
 }

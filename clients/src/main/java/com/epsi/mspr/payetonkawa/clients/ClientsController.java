@@ -15,22 +15,22 @@ public class ClientsController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ClientEntity getClient(@PathVariable String id) {
+    public ClientEntity getClient(@PathVariable Long id) {
         return clientsService.getClientByID(id);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ClientEntity getClient(@RequestBody ClientEntity clientEntity) {
+    public ClientEntity postClient(@RequestBody ClientEntity clientEntity) {
         return clientsService.postClient(clientEntity);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
-    public ClientEntity getClient(@PathVariable String id, @RequestBody ClientEntity clientEntity) {
+    public ClientEntity getClient(@PathVariable Long id, @RequestBody ClientEntity clientEntity) {
         return clientsService.patchClient(id, clientEntity);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ClientEntity deleteClient(@PathVariable String id) {
+    public ClientEntity deleteClient(@PathVariable Long id) {
         return clientsService.deleteClient(id);
     }
 
