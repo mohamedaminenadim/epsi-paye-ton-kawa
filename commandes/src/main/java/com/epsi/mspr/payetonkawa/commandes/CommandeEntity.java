@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Commande {
+public class CommandeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long commandeID;
