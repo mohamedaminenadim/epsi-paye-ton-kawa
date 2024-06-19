@@ -1,5 +1,6 @@
 package com.epsi.mspr.payetonkawa.commandes;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 @Service
 public class CommandesService {
 
+    @Autowired
     private CommandesRepository commandesRepository;
 
     public List<CommandeEntity> getAllCommandes() {

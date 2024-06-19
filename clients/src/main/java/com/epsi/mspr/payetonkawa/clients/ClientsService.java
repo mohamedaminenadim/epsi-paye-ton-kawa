@@ -1,12 +1,14 @@
 package com.epsi.mspr.payetonkawa.clients;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ClientsService {
-    public ClientsRepository repository;
+    @Autowired
+    private ClientsRepository repository;
 
     public List<ClientEntity> getAllClients() {
         return this.repository.findAll();

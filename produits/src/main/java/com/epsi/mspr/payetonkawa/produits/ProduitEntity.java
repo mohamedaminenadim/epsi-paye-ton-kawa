@@ -1,12 +1,33 @@
 package com.epsi.mspr.payetonkawa.produits;
 
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
-@Data
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "produits")
+@RequiredArgsConstructor
+@Getter
+@Setter
 public class ProduitEntity {
-    private static final long uid = 0L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long produitID;
+
+    @Column(name = "name")
     private String name;
-    private double unitaryPrice;
-    private int quantity;
-    private ProduitType type;
+
+    @OneToOne
+    @Column(name = "details")
+    private ProduitDetails details;
+
+    @Column(name = "creation_date", nullable=false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "stock")
+    private Integer stock;
+
 }
